@@ -14,14 +14,16 @@ int main(){
     if(!visited[i]){
     queue<int> q;
     q.push(i);
+    visited[i] = true;
     while(!q.empty()){
         int u = q.front();
         q.pop();
-        if(visited[u]) continue;
         cout<<u<<"\n";
-        visited[u] = true;
         for(int j=0;j<graph[u].size();j++){
+            if(!vis[i]){
+            visited[i] = true;
             q.push(graph[u][j]);
+            }
         } 
     }
     }
