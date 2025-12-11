@@ -5,6 +5,7 @@ void addEdges( vector<vector<int>> &graph, int u, int v){
     graph[v].push_back(u);
 }
 void dfs(vector<vector<int>> &graph, vector<bool> &visited, int u){
+    if(visited[u]) return;
     visited[u] = true;
     cout<<u<<"\n";
     for(int i=0;i<graph[u].size();i++){
