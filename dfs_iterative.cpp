@@ -24,6 +24,7 @@ int main(){
                 visited[u] = true;
                 cout<<u<<"\n";
                 for(int j=0;j<graph[u].size();j++){
+                    if(!visited[graph[u][j]])
                     st.push(graph[u][j]);
                 } 
             }
