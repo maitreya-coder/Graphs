@@ -15,7 +15,6 @@ int main(){
     addEdge(graph,1,3,2);
     addEdge(graph,2,3,1);
 
-    vector<bool> vis(V,false);
     vector<int> dist(V,INT_MAX);
     dist[0] = 0;
 
@@ -26,16 +25,14 @@ int main(){
         pair<int,int> p = pq.top();
         pq.pop();
         int node = p.second , wt_node = p.first;
-        if(vis[node]) continue;
-        vis[node] = true;
+        if(dist[node] < wt_node) continue;
         for(int i=0;i<graph[node].size();i++){
             pair<int,int> g = graph[node][i];
             int nbr = g.second , wt_nbr = g.first;
-            if(!vis[nbr]){
-                if((wt_nbr + dist[node]) < dist[nbr])
+                if((wt_nbr + dist[node]) < dist[nbr]){
                 dist[nbr] = wt_nbr + dist[node];
                 pq.push(make_pair(nbr,dist[nbr]));
-            }
+                }
         }
     }
 
